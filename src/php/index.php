@@ -31,16 +31,17 @@
 
         if ($fila['cuenta'] == 0) {
             //No existe el usuario
-            echo "<script>alert('Este usuario no existe');</script>";
+            echo "<script>alert('Usuario/Contraseña incorrecta');</script>";
         } else {
             //Existe el usuario
             $consulta = "select password from users where mail='$mail'";
             $filas = ConsultaDatos($consulta);
             $fila = $filas[0];
             if ($fila['password'] == $password) {
-                echo "<script>alert('Contraseña correcta');</script>";
+                header('Location: ../html/home.html');
+                exit;
             } else {
-                echo "<script>alert('Contraseña incorrecta');</script>";
+                echo "<script>alert('Usuario/Contraseña incorrecta');</script>";
             }
         }
     }
